@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/dd3a8b46f4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <form action="">
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Names" required>
+                    </div>
+                    <div class="input-field" id="phoneField">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-field" id="usernameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Username" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    
+                </div>
+                <div class="btn-field">
+                    <button type="button" id="signUpBtn" class="disable">Sign Up</button>
+                    
+                    <button onclick="window.location.href='SignIn.html' ">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        let nameField = document.getElementById("nameField");
+        let usernameField = document.getElementById("usernameField");
+        
+        let phoneField = document.getElementById("phoneField");
+        let emailField = document.querySelector('input[type="email"]');
+        let passwordField = document.querySelector('input[type="password"]');
+
+
+        signUpBtn.onclick = function () {
+            
+
+            // Validate inputs for sign up
+            let isValid = true;
+
+            // Validate email
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailField.value)) {
+                alert("Please enter a valid email address");
+                isValid = false;
+            }
+
+            // Validate phone number (10 digits)
+            let phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phoneField.querySelector('input[type="tel"]').value)) {
+                alert("Please enter a valid 10-digit phone number");
+                isValid = false;
+            }
+
+            
+            
+            let namePattern = /^([A-Za-z]+ ?)+$/;
+            if (!namePattern.test(nameField.querySelector('input[type="text"]').value)) {
+                alert("Please enter valid names (only characters allowed)");
+                isValid = false;
+            }
+
+            
+            if (passwordField.value.length < 8) {
+                alert("Password must be at least 8 characters long");
+                isValid = false;
+            }
+
+            
+            if (isValid) {
+                alert("Successful Registration")
+            }
+        }
+    </script>
+</body>
+</html>
